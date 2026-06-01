@@ -1,10 +1,16 @@
 name: 02 - Workflow Events
 
-on: push
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
 
 jobs:
-    echo:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Show the trigger
-              run: echo "The type of trigger is ${{ github.event_name }}"
+  echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show the trigger
+        run: echo "The type of trigger is ${{ github.event_name }}
